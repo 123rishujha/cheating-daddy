@@ -847,7 +847,7 @@ export class MainView extends LitElement {
             <div class="mode-cards">
                 <div class="mode-card" @click=${() => this._saveMode('byok')}>
                     <span class="mode-card-title">Use your API keys</span>
-                    <span class="mode-card-desc">Bring your own Gemini / Groq keys</span>
+                    <span class="mode-card-desc">Bring your own OpenAI key</span>
                 </div>
                 <div class="mode-card" @click=${() => this._saveMode('local')}>
                     <span class="mode-card-title">Use local AI</span>
@@ -862,7 +862,7 @@ export class MainView extends LitElement {
     _renderByokMode() {
         return html`
             <div class="form-group">
-                <label class="form-label">Gemini API Key</label>
+                <label class="form-label">OpenAI API Key</label>
                 <input
                     type="password"
                     placeholder="Required"
@@ -871,20 +871,7 @@ export class MainView extends LitElement {
                     class=${this._keyError ? 'error' : ''}
                 />
                 <div class="form-hint">
-                    <span class="link" @click=${() => this.onExternalLink('https://aistudio.google.com/apikey')}>Get Gemini key</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Groq API Key</label>
-                <input
-                    type="password"
-                    placeholder="Optional"
-                    .value=${this._groqKey}
-                    @input=${e => this._saveGroqKey(e.target.value)}
-                />
-                <div class="form-hint">
-                    <span class="link" @click=${() => this.onExternalLink('https://console.groq.com/keys')}>Get Groq key</span>
+                    <span class="link" @click=${() => this.onExternalLink('https://platform.openai.com/api-keys')}>Get OpenAI key</span>
                 </div>
             </div>
 

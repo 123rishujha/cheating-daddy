@@ -140,11 +140,11 @@ function arrayBufferToBase64(buffer) {
     return btoa(binary);
 }
 
-async function initializeGemini(profile = 'interview', language = 'en-US') {
+async function initializeOpenAI(profile = 'interview', language = 'en-US') {
     const apiKey = await storage.getApiKey();
     if (apiKey) {
         const prefs = await storage.getPreferences();
-        const success = await ipcRenderer.invoke('initialize-gemini', apiKey, prefs.customPrompt || '', profile, language);
+        const success = await ipcRenderer.invoke('initialize-openai', apiKey, prefs.customPrompt || '', profile, language);
         if (success) {
             cheatingDaddy.setStatus('Live');
         } else {
@@ -705,7 +705,7 @@ function stopCapture() {
     offscreenContext = null;
 }
 
-// Send text message to Gemini
+// Send text message to the active provider
 async function sendTextMessage(text) {
     if (!text || text.trim().length === 0) {
         console.warn('Cannot send empty text message');
@@ -1026,7 +1026,7 @@ const cheatingDaddy = {
     updateCurrentResponse: response => cheatingDaddyApp.updateCurrentResponse(response),
 
     // Core functionality
-    initializeGemini,
+    initializeOpenAI,
     initializeCloud,
     initializeLocal,
     startCapture,

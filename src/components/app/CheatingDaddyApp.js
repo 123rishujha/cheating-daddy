@@ -605,7 +605,7 @@ export class CheatingDaddyApp extends LitElement {
                 return;
             }
 
-            await cheatingDaddy.initializeGemini(this.selectedProfile, this.selectedLanguage);
+            await cheatingDaddy.initializeOpenAI(this.selectedProfile, this.selectedLanguage);
         }
 
         cheatingDaddy.startCapture(this.selectedScreenshotInterval, this.selectedImageQuality);
